@@ -1,0 +1,237 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #0b4d67;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#app {
+  width: 90%;
+  max-width: 600px;
+}
+
+.screen {
+  background: #105e7c;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f5a623;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+input {
+  padding: 8px;
+  border-radius: 4px;
+  border: none;
+  margin: 5px 0;
+}
+
+.center {
+  text-align: center;
+} 
+
+#centerCardContainer {
+  position: relative;
+  width: 3.875rem;
+  height: 5.5rem;
+  margin: 10px auto;
+} 
+
+#myTopCardContainer {
+  position: relative;
+  width: 3.875rem;
+  height: 5.5rem;
+  margin: 10px auto;
+}
+
+/* Override default deck-of-cards absolute offsets so single cards stay inside their container */
+#centerCardContainer .card,
+#myTopCardContainer .card {
+  top: 0;
+  left: 0;
+} 
+
+#modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+#modalContent {
+  background: #105e7c;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  overflow: hidden; /* keep animations inside */
+}
+
+#tieContainer {
+  position: relative;
+  width: 1000px;
+  height: 600px;
+  margin: 0 auto;
+  overflow: hidden; /* ensure cards don't overflow modal */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#tieContainer .deck {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Winner card look */
+.modal-card {
+  display: inline-block;
+  width: 6rem;
+  height: 8.5rem;
+  background: #fff;
+  color: #000;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+} 
+
+/* emoji bar */
+#emojiBar {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.4);
+  padding: 6px 10px;
+  border-radius: 20px;
+  display: flex;
+  gap: 8px;
+  z-index: 1500;
+}
+#emojiBar button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* floating emoji */
+@keyframes floatUp {
+  0% { transform: translateY(0) scale(1); opacity:1;}
+  100% { transform: translateY(-400px) scale(1.5); opacity:0;}
+}
+.floating-emoji {
+  position: fixed;
+  bottom: 50px;
+  left: 50%;
+  font-size: 32px;
+  pointer-events: none;
+  animation: floatUp 4s ease-out forwards;
+}
+
+/* player list */
+#playerList {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(0,0,0,0.4);
+  padding: 10px;
+  border-radius: 8px;
+  max-height: 40vh;
+  overflow-y: auto;
+  width: 180px;
+}
+#playerList h4{margin:0 0 6px 0;text-align:center;}
+#playerList li { list-style:none; margin:4px 0;}
+#playerList .active { color:#f5a623; font-weight:bold;} 
+
+.title {
+  font-size: 48px;
+  font-weight: 800;
+  margin: 0 0 10px 0;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+}
+.room-heading {
+  font-size: 28px;
+  margin: 0 0 20px 0;
+}
+/* decorated input */
+.input-decor {
+  padding:8px 12px;
+  border-radius:6px;
+  border:none;
+  width:80px;
+  text-align:center;
+  font-weight:bold;
+} 
+
+.banner-card{
+  background: rgba(255,255,255,0.15);
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-align:center;
+  margin-bottom:8px;
+  backdrop-filter: blur(4px);
+  box-shadow:0 2px 6px rgba(0,0,0,0.3);
+}
+.title-card{font-size:36px;font-weight:900;}
+.room-card{font-size:24px;font-weight:bold;}
+
+/* waiting player list beautify*/
+.waiting-list{
+  padding:0;
+  margin:0;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  align-items:center;
+}
+.waiting-list li{
+  list-style:none;
+  background:rgba(255,255,255,0.1);
+  padding:6px 12px;
+  border-radius:6px;
+  width:80%;
+  text-align:center;
+} 
+
+#homeBtnTop{
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  padding: 8px 14px;
+  background:#f5a623;
+  color:#000;
+  border:none;
+  border-radius:6px;
+  font-weight:bold;
+  cursor:pointer;
+  z-index:1600;
+} 
